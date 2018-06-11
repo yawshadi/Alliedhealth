@@ -22,7 +22,9 @@ public function __construct(){
             $_SESSION['userid']=$result->uid;
             Redirecting::location('index');
         }else{
-            Redirecting::location('login');
+            $data="Incorrect Username or Password";
+            $data = Encryption::lock($data);
+            Redirecting::location('login',$data);
 
         }
     }

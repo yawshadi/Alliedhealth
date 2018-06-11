@@ -1,6 +1,7 @@
 <?php
 require("init.php");
 
+  
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -71,9 +72,10 @@ require("init.php");
                                     </h2>
                                     <!--<h4 class="text-uppercase font-bold m-b-0">Sign In</h4>-->
                                 </div>
+                                
                                 <div class="account-content">
                                     <form class="form-horizontal" action="ajaxscripts/login.php" method='post'>
-
+                                    <span style='color:red;margin-left:55px'><?= Printisset::printing();?></span>
                                         <div class="form-group ">
                                             <div class="col-xs-12">
                                                 <input class="form-control" type="text" name='username' required="" placeholder="Username">

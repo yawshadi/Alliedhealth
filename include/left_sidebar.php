@@ -37,8 +37,24 @@
                                   
                                 </ul>
                             </li>
-
                             <li class="has_sub">
+                                <a href="javascript:void(0);" class="waves-effect"><i class="mdi mdi-invert-colors"></i> <span> Accounts </span> <span class="menu-arrow"></span></a>
+                                <ul class="list-unstyled">
+                                    <li><a href="account.php">Accounts</a></li>
+                                    
+                                  
+                                </ul>
+                            </li>
+                            <li class="has_sub">
+                                <a href="javascript:void(0);" class="waves-effect"><i class="mdi mdi-invert-colors"></i> <span> Training Programmes </span> <span class="menu-arrow"></span></a>
+                                <ul class="list-unstyled">
+                                    <li><a href="addtraining.php">Add Training</a></li>
+                                    <li><a href="traininglist.php">List of Trainings</a></li>
+                                    
+                                  
+                                </ul>
+                            </li>
+                         <!--   <li class="has_sub">
                                 <a href="javascript:void(0);" class="waves-effect"><i class="mdi mdi-layers"></i><span> Admin UI </span> <span class="menu-arrow"></span></a>
                                 <ul class="list-unstyled">
                                     <li><a href="admin-sweet-alert.html">Sweet Alert</a></li>
@@ -188,7 +204,7 @@
                                     <li><a href="real-estate-profile.html">Agent Details</a></li>
                                     <li><a href="real-estate-add.html">Add Property</a></li>
                                 </ul>
-                            </li>
+                            </li>-->
 
                         </ul>
                     </div>
