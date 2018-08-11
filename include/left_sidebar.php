@@ -16,7 +16,7 @@
                                 <li><a href="javascript:void(0)"><i class="mdi mdi-face-profile m-r-5"></i> Profile</a></li>
                                 <li><a href="javascript:void(0)"><i class="mdi mdi-account-settings-variant m-r-5"></i> Settings</a></li>
                                 <li><a href="javascript:void(0)"><i class="mdi mdi-lock m-r-5"></i> Lock screen</a></li>
-                                <li><a href="javascript:void(0)"><i class="mdi mdi-logout m-r-5"></i> Logout</a></li>
+                                <li><a href="logout.php"><i class="mdi mdi-logout m-r-5"></i> Logout</a></li>
                             </ul>
                         </div>
 
@@ -40,7 +40,7 @@
                             <li class="has_sub">
                                 <a href="javascript:void(0);" class="waves-effect"><i class="mdi mdi-invert-colors"></i> <span> Accounts </span> <span class="menu-arrow"></span></a>
                                 <ul class="list-unstyled">
-                                    <li><a href="account.php">Accounts</a></li>
+                                    <li><a href="account.php">New Registration</a></li>
                                     
                                   
                                 </ul>

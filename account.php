@@ -41,7 +41,7 @@ require("include/header.php");
                     <div class="row">
 							<div class="col-xs-12">
 								<div class="page-title-box">
-                                    <h4 class="page-title">Add Institution</h4>
+                                    <h4 class="page-title">Accounts Collections</h4>
                                     
                                     <div class="clearfix"></div>
                                 </div>
@@ -50,7 +50,7 @@ require("include/header.php");
 
                         <div class="panel panel-flat">
                         <div class="panel-heading">
-                            <legend class="text-bold">Institution</legend>
+                            <legend class="text-bold">Accounts </legend>
 
                             <!-- Bootstrap alert notification -->
                         
@@ -58,31 +58,29 @@ require("include/header.php");
 
 
                             <div class="panel-body">
-                                <form action="forms/saveinstitution.php" method="post">
+                                <form action="forms/addpayment.php" method="post">
                                 <div class="col-lg-6">
                                     <fieldset>
 
 
 
                                         <div class="form-group">
-                                            <label>Institution name:</label>
-                                            <input class="form-control" name='institutionname' placeholder="Institution name" value="" type="text">
+                                            <label>Fullname:</label>
+                                            <input class="form-control" name='fullname' placeholder="Fullname" value="" type="text">
                                         </div>
 
                                         <div class="form-group">
-                                            <label>Type of Institution:</label>
-                                            <select name="schooltype" class="form-control select" >
-                                                <option>Please select</option>
-                                                <option>Schooltype</option>
-                                            </select>
+                                            <label>Amount Due:</label>
+                                            <input class="form-control" name='amountdue' placeholder="Amount Due" value="" type="text">
+
 
                                         </div>
 
                                      
 
                                         <div class="form-group">
-                                            <label>Adresse:</label>
-                                            <input class="form-control" name='address' placeholder="Adresse" value="" type="text">
+                                            <label>Received By:</label>
+                                            <input class="form-control" name='recievedby' placeholder="Received By" value="" type="text">
                                         </div>
                                     
 
@@ -94,19 +92,19 @@ require("include/header.php");
                                     <fieldset>
 
                                         <div class="form-group">
-                                            <label>Location:</label>
-                                            <input class="form-control" name="location" placeholder="Location" value="" type="text">
+                                            <label>Serial Number:</label>
+                                            <input class="form-control" name="serialnumber" placeholder="Serial Number" value="" type="text">
                                         </div>
 
                                         <div class="form-group">
-                                            <label>Data Established:</label>
-                                            <input class="form-control" name="dateestablished" placeholder="Date Established" value="" type="text">
+                                            <label>Amount Paid:</label>
+                                            <input class="form-control" name="amountpaid" placeholder="Amount Paid" value="" type="text">
                                         </div>
 
 
                                         <div class="form-group">
-                                            <label>Homepage:</label>
-                                            <input class="form-control" name="homepage" placeholder="Homepage" value="" type="text">
+                                            <label>Payment Date:</label>
+                                            <input class="form-control" name="paymentdate" placeholder="Payment Date" value="" type="text">
                                         </div>
 
 
@@ -114,8 +112,8 @@ require("include/header.php");
 
                                         <div class="form-group">
                                             <label>&nbsp;</label>
-                                            <button type="submit" name="createinstitution" class="btn btn-primary">Save Data <i class="icon-add position-right"></i></button>
-                                            <a href=""><button type="button" class="btn-secondary btn">Back to list</button></a>
+                                            <button type="submit" name="addpayment" class="btn btn-primary">Process Payment <i class="icon-add position-right"></i></button>
+                                           
                                         </div>
 
 

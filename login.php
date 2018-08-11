@@ -74,7 +74,7 @@ require("init.php");
                                 </div>
                                 
                                 <div class="account-content">
-                                    <form class="form-horizontal" action="ajaxscripts/login.php" method='post'>
+                                    <form class="form-horizontal" action="forms/login.php" method='post'>
                                     <span style='color:red;margin-left:55px'><?= Printisset::printing();?></span>
                                         <div class="form-group ">
                                             <div class="col-xs-12">
