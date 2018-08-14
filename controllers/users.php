@@ -23,7 +23,6 @@ public function __construct(){
             Redirecting::location('index');
         }else{
             $data="Incorrect Username or Password";
-            $data = Encryption::lock($data);
             Redirecting::location('login',$data);
 
         }

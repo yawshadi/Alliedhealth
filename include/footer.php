@@ -84,9 +84,75 @@
         <script src="plugins/bootstrap-daterangepicker/daterangepicker.js"></script>
 
 
+        <!---Datatables-->
+        <script src="plugins/datatables/jquery.dataTables.min.js"></script>
+        <script src="plugins/datatables/dataTables.bootstrap.js"></script>
+
+        <script src="plugins/datatables/dataTables.buttons.min.js"></script>
+        <script src="plugins/datatables/buttons.bootstrap.min.js"></script>
+        <script src="plugins/datatables/jszip.min.js"></script>
+        <script src="plugins/datatables/pdfmake.min.js"></script>
+        <script src="plugins/datatables/vfs_fonts.js"></script>
+        <script src="plugins/datatables/buttons.html5.min.js"></script>
+        <script src="plugins/datatables/buttons.print.min.js"></script>
+        <script src="plugins/datatables/dataTables.fixedHeader.min.js"></script>
+        <script src="plugins/datatables/dataTables.keyTable.min.js"></script>
+        <script src="plugins/datatables/dataTables.responsive.min.js"></script>
+        <script src="plugins/datatables/responsive.bootstrap.min.js"></script>
+        <script src="plugins/datatables/dataTables.scroller.min.js"></script>
+        <script src="plugins/datatables/dataTables.colVis.js"></script>
+        <script src="plugins/datatables/dataTables.fixedColumns.min.js"></script>
+
+        <!-- init -->
+        <script src="assets/pages/jquery.datatables.init.js"></script>
         <!-- Dashboard init -->
         <script src="assets/pages/jquery.dashboard_2.js"></script>
 
         <!-- App js -->
         <script src="assets/js/jquery.core.js"></script>
         <script src="assets/js/jquery.app.js"></script>
+
+        <script>
+        // This Function will handle all ajax post request
+function AjaxPostRequest(ajaxurl, postdata) {
+    $.ajax({
+        type: "POST",
+        url: ajaxurl,
+        data: postdata,
+        beforeSend: function() {
+           $.blockUI();
+        },
+        success: function(text) {
+            console.log(text);
+        },
+        complete: function() {
+         $.unblockUI();
+        },
+        error: function(xhr, ajaxOptions, thrownError) {
+            alert(xhr.status + " " + thrownError);
+        }
+    });
+}
+
+
+function AjaxPostRequestWithContainer(ajaxurl, postdata, containerclass) {
+    $.ajax({
+        type: "POST",
+        url: ajaxurl,
+        data: postdata,
+        beforeSend: function() {
+            $.blockUI();
+        },
+        success: function(text) {
+            $('.' + containerclass + '').html(text);
+        },
+        complete: function() {
+            $.unblockUI();
+        },
+        error: function(xhr, ajaxOptions, thrownError) {
+            alert(xhr.status + " " + thrownError);
+        }
+    });
+}
+
+        </script>

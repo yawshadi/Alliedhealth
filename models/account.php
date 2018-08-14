@@ -1,6 +1,6 @@
 <?php
 
-class accounts extends tableDataObject{
+class account extends tableDataObject{
 
     const TABLENAME = 'accounts';
 }

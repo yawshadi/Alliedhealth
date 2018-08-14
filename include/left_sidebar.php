@@ -34,6 +34,7 @@
                                     <li><a href="addinstitution.php">Add Institution</a></li>
                                     <li><a href="accreditinstitution.php">Accredit Institution</a></li>
                                     <li><a href="institutionlist.php">Institution List</a></li>
+                                    <li><a href="addprofession.php">Profession List</a></li>
                                   
                                 </ul>
                             </li>

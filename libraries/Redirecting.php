@@ -13,6 +13,7 @@ class Redirecting {
         if(is_null($data)){
         header('Location:'.URLROOT.'/'.$destinationurl.'.php');
         }else{
+            $data=Encryption::lock($data);
             header('Location:'.URLROOT.'/'.$destinationurl.'.php?data='.$data);
         }
     }
