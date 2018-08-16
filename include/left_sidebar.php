@@ -28,20 +28,22 @@
                                 
                             </li>
 
-                            <li class="has_sub">
+                           <!-- <li class="has_sub">
                                 <a href="javascript:void(0);" class="waves-effect"><i class="mdi mdi-invert-colors"></i> <span> MIS </span> <span class="menu-arrow"></span></a>
                                 <ul class="list-unstyled">
                                     <li><a href="addinstitution.php">Add Institution</a></li>
                                     <li><a href="accreditinstitution.php">Accredit Institution</a></li>
                                     <li><a href="institutionlist.php">Institution List</a></li>
-                                    <li><a href="addprofession.php">Profession List</a></li>
+                                  
                                   
                                 </ul>
-                            </li>
+                            </li>-->
                             <li class="has_sub">
                                 <a href="javascript:void(0);" class="waves-effect"><i class="mdi mdi-invert-colors"></i> <span> Accounts </span> <span class="menu-arrow"></span></a>
                                 <ul class="list-unstyled">
                                     <li><a href="account.php">New Registration</a></li>
+                                    <li><a href="renewal.php">Renewals</a></li>
+                                    <li><a href="billconfig.php">Bill Configuration</a></li>
                                     
                                   
                                 </ul>
@@ -49,8 +51,11 @@
                             <li class="has_sub">
                                 <a href="javascript:void(0);" class="waves-effect"><i class="mdi mdi-invert-colors"></i> <span> Training Programmes </span> <span class="menu-arrow"></span></a>
                                 <ul class="list-unstyled">
+                                <li><a href="addinstitution.php">Add Institution</a></li>
+                                <li><a href="institutionlist.php">List of Institution</a></li>
                                     <li><a href="addtraining.php">Add Training</a></li>
                                     <li><a href="traininglist.php">List of Trainings</a></li>
+                                    <li><a href="addprofession.php">Profession List</a></li>
                                     
                                   
                                 </ul>

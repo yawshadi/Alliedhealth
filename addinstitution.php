@@ -99,8 +99,8 @@ require("include/header.php");
                                         </div>
 
                                         <div class="form-group">
-                                            <label>Data Established:</label>
-                                            <input class="form-control" name="dateestablished" placeholder="Date Established" value="" type="text">
+                                            <label>Date Registered:</label>
+                                            <input class="form-control dates" name="dateregistered" placeholder="Date Established" value="" type="text">
                                         </div>
 
 
@@ -115,7 +115,7 @@ require("include/header.php");
                                         <div class="form-group">
                                             <label>&nbsp;</label>
                                             <button type="submit" name="createinstitution" class="btn btn-primary">Save Data <i class="icon-add position-right"></i></button>
-                                            <a href=""><button type="button" class="btn-secondary btn">Back to list</button></a>
+                                            <a href="institutionlist.php"><button type="button" class="btn-secondary btn">Back to list</button></a>
                                         </div>
 
 

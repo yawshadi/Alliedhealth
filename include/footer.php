@@ -66,6 +66,7 @@
         <script src="assets/js/jquery.slimscroll.js"></script>
         <script src="assets/js/jquery.scrollTo.min.js"></script>
         <script src="plugins/switchery/switchery.min.js"></script>
+        <script src= "plugins/jquery-ui/jquery-ui.min.js"></script>
 
         <!-- Counter js  -->
         <script src="plugins/waypoints/jquery.waypoints.min.js"></script>
@@ -79,8 +80,9 @@
         <script src="plugins/flot-chart/jquery.flot.pie.js"></script>
         <script src="plugins/flot-chart/jquery.flot.selection.js"></script>
         <script src="plugins/flot-chart/jquery.flot.crosshair.js"></script>
-
+       
         <script src="plugins/moment/moment.js"></script>
+        <script src="plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
         <script src="plugins/bootstrap-daterangepicker/daterangepicker.js"></script>
 
 
@@ -155,4 +157,30 @@ function AjaxPostRequestWithContainer(ajaxurl, postdata, containerclass) {
     });
 }
 
+function AjaxGetRequestWithTextbox(ajaxurl, getdata,textboxid) {
+    $.ajax({
+        type: "GET",
+        url: ajaxurl,
+        data: getdata,
+        beforeSend: function() {
+           $.blockUI();
+        },
+        success: function(text) {
+            console.log(text);
+            $('#'+textboxid+'').val(text);
+        },
+        complete: function() {
+         $.unblockUI();
+        },
+        error: function(xhr, ajaxOptions, thrownError) {
+            alert(xhr.status + " " + thrownError);
+        }
+    });
+}
+
+$('.dates').datepicker({
+                format: "yyyy-mm-dd",
+                autoclose: true,
+                todayHighlight: true
+             });
         </script>

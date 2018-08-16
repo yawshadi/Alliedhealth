@@ -47,52 +47,59 @@ require("include/header.php")
                                 </div>
 							</div>
                         </div>
-                        
-                        <div class="panel panel-flat">
-                        <div class="panel-heading">
-                            <legend class="text-bold">Institution</legend>
+                      
+                          
+
+                       <div class="row">
+                            <div class="col-sm-12">
+                                <div class="card-box table-responsive">
+                                    <h4 class="m-t-0 header-title"><b>List of Institutions</b></h4>
+                                    <p class="text-muted font-13 m-b-30">
+
+                                    </p>
+
+                                    <table id="datatable" class="table table-striped  table-colored table-info">
+                                        <thead>
+                                        <tr>
+                                            <th>No</th>
+                                            <th>Institution Name</th>
+                                            <th>Address</th>
+                                            <th>Location</th>
+                                            <th>Date Registered</th>
+                                            <th>Delete</th>
+
+                                        </tr>
+                                        </thead>
+
+
+                                        <tbody>
+                                            <?php
+                                    $institutionlist = institution::listAll();
+                                    $count = 1;
+                                    foreach ($institutionlist as $institutions):
+                                    ?>
+                                        <tr>
+                                            <td><?= $count?></td>
+                                            <td><?= $institutions->nameofinstitution; ?></td>
+                                            <td><?= $institutions->address; ?></td>
+                                            <td><?= $institutions->location; ?></td>
+                                            <td><?= $institutions->dateregistered; ?></td>
+                                           <!-- <td><a href='#' class='editinstitution' pid="<?=$institutions->institutionid ?>">Edit</a></td>-->
+                                            <td><a  href='#' class='deleteinstitution' institutionid="<?=$institutions->institutionid ?>">Delete</a></td>
+
+                                        </tr>
+                                        <?php
+                                    $count++;
+                                    endforeach;
+                                    ?>
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                            
                         </div>
-                            <div class="panel-body">
 
-                        <div class="col-md-12">
-											
-
-												<div class="table-responsive">
-                                                    <table class="table m-0 table-colored-full table-full-info table-hover">
-                                                        <thead>
-                                                            <tr>
-                                                                <th>#</th>
-                                                                <th>First Name</th>
-                                                                <th>Last Name</th>
-                                                                <th>Username</th>
-                                                            </tr>
-                                                        </thead>
-                                                        <tbody>
-                                                            <tr>
-                                                                <th scope="row">1</th>
-                                                                <td>Mark</td>
-                                                                <td>Otto</td>
-                                                                <td>@mdo</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <th scope="row">2</th>
-                                                                <td>Jacob</td>
-                                                                <td>Thornton</td>
-                                                                <td>@fat</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <th scope="row">3</th>
-                                                                <td>Larry</td>
-                                                                <td>the Bird</td>
-                                                                <td>@twitter</td>
-                                                            </tr>
-                                                        </tbody>
-                                                    </table>
-                                                </div>
-											</div>
-
-                                        </div>
-</div>
+                         </div>
                     </div> <!-- container -->
 
                 </div> <!-- content -->
@@ -113,7 +120,19 @@ require("include/header.php")
          <?php require("include/footer.php") ?>
 
         <script>
-        
+                    $("#datatable").DataTable();
+                    $(".deleteinstitution").click(function (e) { 
+                    
+                    var institutionid=$(this).attr('institutionid');
+                    if (window.confirm("Are you sure you want to delete?")) {
+                    var postdata = { institutionid: institutionid }
+                    var ajaxurl =  "forms/deleteinstitution.php";
+                    AjaxPostRequest(ajaxurl, postdata);
+                    window.location.reload();
+                    return false;
+
+                    }
+                });
         </script>
         
 

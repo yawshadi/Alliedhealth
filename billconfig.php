@@ -41,7 +41,7 @@ require "include/header.php";
                     <div class="row">
 							<div class="col-xs-12">
 								<div class="page-title-box">
-                                    <h4 class="page-title">Add Profession</h4>
+                                    <h4 class="page-title">Configurations</h4>
 
                                     <div class="clearfix"></div>
                                 </div>
@@ -50,7 +50,7 @@ require "include/header.php";
 
                         <div class="panel panel-flat">
                         <div class="panel-heading">
-                            <legend class="text-bold">Profession  </legend>
+                            <legend class="text-bold">Bills configuration</legend>
 
                             <!-- Bootstrap alert notification -->
 
@@ -58,31 +58,51 @@ require "include/header.php";
 
 
                             <div class="panel-body">
-                                <form action="forms/saveprofession.php" method="post">
-                                <div class="col-lg-6">
+                                <form action="forms/addbill.php" method="post">
+                                <div class="col-lg-4">
                                     <fieldset>
 
                                         <div class="form-group">
-                                            <label>Profession name:</label>
-                                            <input class="form-control" name='professionname' placeholder="Profession Name" value="" type="text">
+                                            <label>Profession :</label>
+                                            <select required name="professionid" class="form-control select" >
+                                            <option value="">Please Select</option>
+                                            <?php
+                                            $professionlist = profession::listAll(); 
+                                            foreach($professionlist as $profession):
+                                            ?>
+                                            <option value="<?=$profession->professionid ?>"><?= $profession->professionname ?></option>
+                                            <?php endforeach;?>
+                                            </select>
                                         </div>
                                         <span style='color:red'><?= Printisset::printing();?></span>
 
                                     </fieldset>
                                 </div>
-                                <div class="col-lg-6">
+                                <div class="col-lg-4">
                                     <fieldset>
 
                                         <div class="form-group">
-                                            <label>Profession Code:</label>
-                                            <input class="form-control" name="professioncode" placeholder="Profession Code" value="" type="text">
+                                            <label>Amount Due:</label>
+                                            <input class="form-control" name="amountdue" placeholder="Amount Due" value="" type="text">
+                                        </div>
+
+
+
+                                    </fieldset>
+                                </div>
+                                <div class="col-lg-4">
+                                    <fieldset>
+
+                                        <div class="form-group">
+                                            <label>Effective Date:</label>
+                                            <input class="form-control dates" id='billdate' name="billdate" placeholder="Date" value="" type="text">
                                         </div>
 
 
 
                                         <div class="form-group">
                                             <label>&nbsp;</label>
-                                            <button type="submit" name="creatprofession" class="btn btn-primary">Save Data <i class="icon-add position-right"></i></button>
+                                            <button type="submit" name="createbill" class="btn btn-primary">Save Data <i class="icon-add position-right"></i></button>
                                         </div>
 
 
@@ -96,7 +116,7 @@ require "include/header.php";
                     <div class="row">
                             <div class="col-sm-12">
                                 <div class="card-box table-responsive">
-                                    <h4 class="m-t-0 header-title"><b>List of Current Professions</b></h4>
+                                    <h4 class="m-t-0 header-title"><b>Billing List</b></h4>
                                     <p class="text-muted font-13 m-b-30">
 
                                     </p>
@@ -107,6 +127,8 @@ require "include/header.php";
                                             <th>No</th>
                                             <th>Profession Name</th>
                                             <th>Profession Code</th>
+                                            <th>Amount Due</th>
+                                            <th>Effective Date</th>
                                             <th>Delete</th>
 
                                         </tr>
@@ -115,7 +137,7 @@ require "include/header.php";
 
                                         <tbody>
                                             <?php
-                                    $professionlist = profession::listAll();
+                                    $professionlist = billing::billinglist();
                                     $count = 1;
                                     foreach ($professionlist as $professions):
                                     ?>
@@ -123,8 +145,10 @@ require "include/header.php";
                                             <td><?= $count?></td>
                                             <td><?= $professions->professionname; ?></td>
                                             <td><?= $professions->professioncode; ?></td>
+                                            <td><?= $professions->amount; ?></td>
+                                            <td><?= $professions->billdate; ?></td>
                                            <!-- <td><a href='#' class='editprofession' pid="<?=$professions->professionid ?>">Edit</a></td>-->
-                                            <td><a  href='#' class='deleteprofession' pid="<?=$professions->professionid ?>">Delete</a></td>
+                                            <td><a  href='#' class='deletebill' billid="<?=$professions->billid ?>">Delete</a></td>
 
                                         </tr>
                                         <?php
@@ -162,12 +186,12 @@ require "include/header.php";
             TableManageButtons.init();
             $("#datatable").DataTable();
 
-                $(".deleteprofession").click(function (e) { 
+                $(".deletebill").click(function (e) { 
                     
-                    var professionid=$(this).attr('pid');
+                    var billid=$(this).attr('billid');
                     if (window.confirm("Are you sure you want to delete?")) {
-                    var postdata = { professionid: professionid }
-                    var ajaxurl =  "forms/deleteprofession.php";
+                    var postdata = { billid: billid }
+                    var ajaxurl =  "forms/deletebill.php";
                     AjaxPostRequest(ajaxurl, postdata);
                     window.location.reload();
                     return false;
