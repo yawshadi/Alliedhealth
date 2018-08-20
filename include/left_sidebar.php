@@ -44,6 +44,7 @@
                                     <li><a href="account.php">New Registration</a></li>
                                     <li><a href="renewal.php">Renewals</a></li>
                                     <li><a href="billconfig.php">Bill Configuration</a></li>
+                                    <li><a href="accountlist.php">Payment List</a></li>
                                     
                                   
                                 </ul>
