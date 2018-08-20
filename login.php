@@ -16,7 +16,7 @@ require("init.php");
         <!-- App favicon -->
         <link rel="shortcut icon" href="assets/images/favicon.ico">
         <!-- App title -->
-        <title>Zircos - Responsive Admin Dashboard Template</title>
+        <title>AHPC LOGIN</title>
 
         <!-- App css -->
         <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
@@ -121,11 +121,11 @@ require("init.php");
                             <!-- end card-box-->
 
 
-                            <div class="row m-t-50">
+                           <!-- <div class="row m-t-50">
                                 <div class="col-sm-12 text-center">
                                     <p class="text-muted">Don't have an account? <a href="page-register.html" class="text-primary m-l-5"><b>Sign Up</b></a></p>
                                 </div>
-                            </div>
+                            </div>-->
 
                         </div>
                         <!-- end wrapper -->

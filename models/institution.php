@@ -11,4 +11,10 @@ class institution extends tableDataObject{
         $healthdb->prepare($query);
         $healthdb->execute();
     }
+    public static function getinstitutionbyid($institutionid){
+        global $healthdb;
+        $query = "SELECT * FROM institutions WHERE institutionid='$institutionid'";
+        $healthdb->prepare($query);
+       return $healthdb->singleRecord();
+    }
 }

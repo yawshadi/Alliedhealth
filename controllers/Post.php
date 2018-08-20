@@ -17,8 +17,19 @@ class Post extends PostController {
         foreach ($_POST as $name => $value) {
             $$name = $value;
         }
+        if(isset($institutionid)){
+            $institutionid=$institutionid;
+            $page='institutionlist';
+            $data="Institution Accredited";
 
-        $institution = new institution();
+        }else{
+            $institutionid=null;
+            $page='addinstitution';
+            $data="Institution saved";
+
+ 
+        }
+        $institution = new institution($institutionid);
         $institution_data=& $institution->recordObject;
 
         $institution_data->nameofinstitution=$institutionname;
@@ -27,10 +38,11 @@ class Post extends PostController {
         $institution_data->location=$location;
         $institution_data->homepage=$homepage;
         $institution_data->schooltype=$schooltype;
+        $institution_data->status=$status;
 
 
         $institution->store();
-        Redirecting::location('addinstitution');
+        Redirecting::location($page,$data);
     }
 
     public static function addProfession(){

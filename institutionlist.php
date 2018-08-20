@@ -66,6 +66,8 @@ require("include/header.php")
                                             <th>Address</th>
                                             <th>Location</th>
                                             <th>Date Registered</th>
+                                            <th>Status</th>
+                                            <th>view</th>
                                             <th>Delete</th>
 
                                         </tr>
@@ -84,7 +86,9 @@ require("include/header.php")
                                             <td><?= $institutions->address; ?></td>
                                             <td><?= $institutions->location; ?></td>
                                             <td><?= $institutions->dateregistered; ?></td>
-                                           <!-- <td><a href='#' class='editinstitution' pid="<?=$institutions->institutionid ?>">Edit</a></td>-->
+                                            <td><?= ($institutions->status==1)?"<button type='button' name='creatprofession' class='btn btn-primary'>Accredited<i class='icon-add position-right'></i></button>
+":"<button type='button' name='creatprofession' class='btn btn-danger'>Not Accredited<i class='icon-add position-right'></i></button>" ?></td>
+                                           <td><a href='viewinstitution.php?institutionid=<?=$institutions->institutionid ?>' class='editinstitution' institutionid="<?=$institutions->institutionid ?>">View</a></td>
                                             <td><a  href='#' class='deleteinstitution' institutionid="<?=$institutions->institutionid ?>">Delete</a></td>
 
                                         </tr>

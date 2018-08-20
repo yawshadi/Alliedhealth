@@ -9,7 +9,7 @@ define('DB_PORT', '3306');
 
 
 //site constants
-define('SITENAME', 'health');
+define('SITENAME', 'AHPC');
 define('FOOTER', '© '.date('Y'));
 define('APPROOT', dirname(dirname( __FILE__ )));
 define('URLROOT', 'http://localhost:8088');

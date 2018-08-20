@@ -1,6 +1,9 @@
 <?php
 require("init.php");
 new users(); 
+$institutionid=$_GET['institutionid'];
+$institutiondata= institution::getinstitutionbyid($institutionid);
+
 require("include/header.php");
 
 ?>
@@ -41,7 +44,7 @@ require("include/header.php");
                     <div class="row">
 							<div class="col-xs-12">
 								<div class="page-title-box">
-                                    <h4 class="page-title">Add Institution</h4>
+                                    <h4 class="page-title">Accredit Institution</h4>
                                     
                                     <div class="clearfix"></div>
                                 </div>
@@ -74,17 +77,18 @@ require("include/header.php");
                                 <div class="col-lg-6">
                                     <fieldset>
 
-                                    <input class="form-control" name='status' placeholder="Institution name" value="0" type="hidden">
+                                    <input class="form-control" name='institutionid' placeholder="Institution name" value="<?= $institutiondata->institutionid ?>" type="hidden">
+                                    <input class="form-control" name='status' placeholder="Institution name" value="1" type="hidden">
 
 
                                         <div class="form-group">
                                             <label>Institution name:</label>
-                                            <input class="form-control" name='institutionname' placeholder="Institution name" value="" type="text">
+                                            <input class="form-control" name='institutionname' placeholder="Institution name" value="<?= $institutiondata->nameofinstitution ?>" type="text">
                                         </div>
 
                                         <div class="form-group">
                                             <label>Type of Institution:</label>
-                                            <input class="form-control" name='schooltype' placeholder="Type of Institution" value="" type="text">
+                                            <input class="form-control" name='schooltype' placeholder="Type of Institution" value="<?= $institutiondata->schooltype?>" type="text">
 
 
                                         </div>
@@ -93,7 +97,7 @@ require("include/header.php");
 
                                         <div class="form-group">
                                             <label>Adresse:</label>
-                                            <input class="form-control" name='address' placeholder="Adresse" value="" type="text">
+                                            <input class="form-control" name='address' placeholder="Adresse" value="<?= $institutiondata->address?>" type="text">
                                         </div>
                                     
 
@@ -106,18 +110,18 @@ require("include/header.php");
 
                                         <div class="form-group">
                                             <label>Location:</label>
-                                            <input class="form-control" name="location" placeholder="Location" value="" type="text">
+                                            <input class="form-control" name="location" placeholder="Location" value="<?= $institutiondata->location?>" type="text">
                                         </div>
 
                                         <div class="form-group">
                                             <label>Date Registered:</label>
-                                            <input class="form-control dates" name="dateregistered" placeholder="Date Established" value="" type="text">
+                                            <input class="form-control dates" name="dateregistered" placeholder="Date Established" value="<?= $institutiondata->dateregistered?>" type="text">
                                         </div>
 
 
                                         <div class="form-group">
                                             <label>Homepage:</label>
-                                            <input class="form-control" name="homepage" placeholder="Homepage" value="" type="text">
+                                            <input class="form-control" name="homepage" placeholder="Homepage" value="<?= $institutiondata->homepage?>" type="text">
                                         </div>
 
 
@@ -125,7 +129,7 @@ require("include/header.php");
 
                                         <div class="form-group">
                                             <label>&nbsp;</label>
-                                            <button type="submit" name="createinstitution" class="btn btn-primary">Save Data <i class="icon-add position-right"></i></button>
+                                            <button type="submit" name="createinstitution" class="btn btn-warning">Accredit <i class="icon-add position-right"></i></button>
                                             <a href="institutionlist.php"><button type="button" class="btn-secondary btn">Back to list</button></a>
                                         </div>
 
