@@ -45,6 +45,7 @@
                                     <li><a href="renewal.php">Renewals</a></li>
                                     <li><a href="billconfig.php">Bill Configuration</a></li>
                                     <li><a href="accountlist.php">Payment List</a></li>
+                                    <li><a href="addprofession.php">Profession List</a></li>
                                     
                                   
                                 </ul>
@@ -56,7 +57,7 @@
                                 <li><a href="institutionlist.php">List of Institution</a></li>
                                     <li><a href="addtraining.php">Add Training</a></li>
                                     <li><a href="traininglist.php">List of Trainings</a></li>
-                                    <li><a href="addprofession.php">Profession List</a></li>
+                                   
                                     
                                   
                                 </ul>

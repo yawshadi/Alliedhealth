@@ -62,8 +62,8 @@ require("include/header.php");
                                 <div class="card-box widget-box-two widget-two-info">
                                     <i class="mdi mdi-chart-areaspline widget-two-icon"></i>
                                     <div class="wigdet-two-content text-white">
-                                        <p class="m-0 text-uppercase font-600 font-secondary text-overflow" title="Statistics">Statistics</p>
-                                        <h2 class="text-white"><span data-plugin="counterup">34578</span> <small><i class="mdi mdi-arrow-up text-success"></i></small></h2>
+                                        <p class="m-0 text-uppercase font-600 font-secondary text-overflow" title="Statistics">No. Registrations</p>
+                                        <h2 class="text-white"><span data-plugin="counterup"><?= account::RecordCount() ?></span> <small><i class="mdi mdi-arrow-up text-success"></i></small></h2>
                                         <p class="m-0"><b>Last:</b> 30.4k</p>
                                     </div>
                                 </div>
@@ -73,8 +73,8 @@ require("include/header.php");
                                 <div class="card-box widget-box-two widget-two-primary">
                                     <i class="mdi mdi-layers widget-two-icon"></i>
                                     <div class="wigdet-two-content text-white">
-                                        <p class="m-0 text-uppercase font-600 font-secondary text-overflow" title="User This Month">User This Month</p>
-                                        <h2 class="text-white"><span data-plugin="counterup">52410 </span> <small><i class="mdi mdi-arrow-up text-success"></i></small></h2>
+                                        <p class="m-0 text-uppercase font-600 font-secondary text-overflow" title="User This Month">No. Institutions</p>
+                                        <h2 class="text-white"><span data-plugin="counterup"><?= institution::RecordCount() ?> </span> <small><i class="mdi mdi-arrow-up text-success"></i></small></h2>
                                         <p class="m-0"><b>Last:</b> 40.33k</p>
                                     </div>
                                 </div>
@@ -84,8 +84,8 @@ require("include/header.php");
                                 <div class="card-box widget-box-two widget-two-danger">
                                     <i class="mdi mdi-access-point-network widget-two-icon"></i>
                                     <div class="wigdet-two-content text-white">
-                                        <p class="m-0 text-uppercase font-600 font-secondary text-overflow" title="Statistics">Statistics</p>
-                                        <h2 class="text-white"><span data-plugin="counterup">6352</span> <small><i class="mdi mdi-arrow-up text-success"></i></small></h2>
+                                        <p class="m-0 text-uppercase font-600 font-secondary text-overflow" title="Statistics">No. Professions</p>
+                                        <h2 class="text-white"><span data-plugin="counterup"><?= profession::RecordCount() ?></span> <small><i class="mdi mdi-arrow-up text-success"></i></small></h2>
                                         <p class="m-0"><b>Last:</b> 30.4k</p>
                                     </div>
                                 </div>
@@ -140,7 +140,7 @@ require("include/header.php");
                         <!-- end row -->
 
 
-                        <div class="row">
+                       <!-- <div class="row">
 
                             <div class="col-md-4">
                                 <div class="panel panel-color panel-info">
@@ -216,10 +216,10 @@ require("include/header.php");
                                         </div>
                                     </div>
                                 </div>
-                                <!-- end panel -->
+                                - end panel --
 
                             </div>
-                            <!-- end col -->
+                            <!-- end col --
 
                             <div class="col-md-8">
                                 <div class="panel panel-color panel-info">
@@ -308,13 +308,13 @@ require("include/header.php");
                                             </table>
 
                                         </div> <!-- table-responsive -->
-                                    </div> <!-- end panel body -->
+                                    </div> <!-- end panel body --
                                 </div>
-                                <!-- end panel -->
+                                <!-- end panel --
                             </div>
-                            <!-- end col -->
+                            <!-- end col --
 
-                        </div>
+                        </div>-->
                         <!-- end row -->
 
 
@@ -323,7 +323,7 @@ require("include/header.php");
                 </div> <!-- content -->
 
                 <footer class="footer text-right">
-                    2016 - 2018 © Zircos.
+                <?= date('Y')?> © AHPC.
                 </footer>
 
             </div>

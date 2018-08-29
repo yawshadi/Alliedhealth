@@ -81,7 +81,7 @@ require("include/header.php");
 
                                         <div class="form-group">
                                             <label>Amount Due:</label>
-                                            <input class="form-control" required id='amountdue' name='amountdue' placeholder="Amount Due" value="" type="text">
+                                            <input class="form-control" required id='amountdue' name='amountdue' readonly value="GHC 200" type="text">
                                            
                                             <input class="form-control"  name='location'  value="account" type="hidden">
                                             <input class="form-control"  name='accounttype'  value="newpayment" type="hidden">
