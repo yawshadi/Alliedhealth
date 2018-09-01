@@ -13,3 +13,6 @@ define('SITENAME', 'AHPC');
 define('FOOTER', '© '.date('Y'));
 define('APPROOT', dirname(dirname( __FILE__ )));
 define('URLROOT', 'http://localhost:8088');
+define('JSVARS',serialize(array(
+	'urlroot' => URLROOT
+)));

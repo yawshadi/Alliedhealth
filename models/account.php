@@ -12,5 +12,10 @@ class account extends tableDataObject{
         return $healthdb->fetchColumn();  
     }
 
-
+    public static function getaccountbyid($accountid){
+        global $healthdb;
+        $query = "SELECT * FROM accounts WHERE accountid='$accountid'";
+        $healthdb->prepare($query);
+        return $healthdb->singleRecord();  
+    }
 }

@@ -1,6 +1,7 @@
 <?php
 
 require("libraries/config.php");
+require("PHPMailer/class.phpmailer.php");
 
 
 /*

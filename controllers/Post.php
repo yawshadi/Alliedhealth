@@ -66,7 +66,7 @@ class Post extends PostController {
         }
     }
 
-    public static function addPayment(){
+    public static function old_addPayment(){
 
         foreach ($_POST as $name => $value) {
             $$name = $value;
@@ -120,6 +120,55 @@ class Post extends PostController {
         
     }
 
+    public static function addPayment(){
+
+        foreach ($_POST as $name => $value) {
+            $$name = $value;
+        }
+
+        $payment = new account();
+        $payment_data=& $payment->recordObject;
+
+        $payment_data->fullname=$fullname;
+        $payment_data->amountpaid=$amountpaid;
+        $payment_data->amountdue=$amountdue;
+        $payment_data->paymentdate=$paymentdate;
+        $payment_data->telephonenumber=$telephonenumber;
+        $payment_data->emailaddress=$emailaddress;
+        $payment_data->randomnumber=$uniqueuploadid;
+        $payment_data->professionid=$professionid;
+        
+
+        $profession = new profession($professionid);
+        $profession_data= & $profession->recordObject;
+        $professioncode = $profession_data->professioncode;
+        $professionname = $profession_data->professionname;
+        $payment_data->professioncode=$professioncode;
+        $payment_data->professionname=$professionname;
+        $date=date('y');
+        $payment->store();
+          
+
+       $data="Payment successfully made. You will receive a txt message once payement is approved";
+       Redirecting::location($location,$data);
+        
+    }
+
+    public static function approvePayment(){
+
+        foreach ($_POST as $name => $value) {
+            $$name = $value;
+        }
+        $account = new account($accountid);
+        $account_data=& $account->recordObject;
+        $dateapproved=date('Y-m-d');
+        $approveby = $_SESSION['fullname'];
+        $account_data->approved=1;
+        $account_data->dateapproved=$dateapproved;
+        $account_data->approvedby=$approveby;
+        $account->store();
+
+    }
     public static function addBill(){
 
         foreach ($_POST as $name => $value) {
@@ -164,6 +213,40 @@ class Post extends PostController {
         }
 
         $delete=institution::deleteinstitution($institutionid); 
+       
+    }
+
+    public static function fileUpload(){
+
+        foreach ($_POST as $name => $value) {
+            $$name = $value;
+        }
+
+        $name = $_FILES['Filedata']['name'];
+        $type = $_FILES['Filedata']['type'];
+        $size = $_FILES['Filedata']['size'];
+
+        $docdate = date("Y-m-d");
+        $uploads = new Uploads();
+        $uploads->filename = $_FILES['Filedata'];
+        $uploads->target_dir = APPROOT . '/uploads';
+        $uploadresponse = $uploads->upLoadFile();
+
+        if ($uploadresponse['status'] == 'SUCCESS') {
+
+            $newname = $uploadresponse['filename'];
+            $docdata = new Documents();
+            $doc = &$docdata->recordObject;
+            $doc->newname = $newname;
+            $doc->name = $name;
+            $doc->type = $type;
+            $doc->size = $size;
+            $doc->randomnumber = $uniqueuploadid;
+            $doc->docdate = $docdate;
+            $docdata->store();
+        } else {
+            echo 'Error Uploading File';
+        }
        
     }
 }

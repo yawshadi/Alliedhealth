@@ -63,10 +63,12 @@ require("include/header.php")
                                         <tr>
                                             <th>No</th>
                                             <th>Fullname</th>
+                                            <th>Amount Due</th>
                                             <th>Amount Paid</th>
                                             <th>Payment Date</th>
-                                            <th>Recieved by</th>
-                                            <th>Serial Number</th>
+                                            <th>Telephone Number</th>
+                                            <th>Satus</th>
+                                            <th>View</th>
                                        
 
                                         </tr>
@@ -82,10 +84,14 @@ require("include/header.php")
                                         <tr>
                                             <td><?= $count?></td>
                                             <td><?= $accounts->fullname; ?></td>
+                                            <td><?= $accounts->amountdue; ?></td>
                                             <td><?= $accounts->amountpaid; ?></td>
                                             <td><?= $accounts->paymentdate; ?></td>
-                                            <td><?= $accounts->recievedby; ?></td>
-                                            <td><?= $accounts->serialnumber; ?></td>
+                                            <td><?= $accounts->telephonenumber; ?></td>
+                                            <td><?= ($accounts->approved==1)?"<button type='button' name='creatprofession' class='btn btn-primary'>Approved<i class='icon-add position-right'></i></button>
+":"<button type='button' name='creatprofession' class='btn btn-danger'>Not Approved<i class='icon-add position-right'></i></button>" ?></td>
+                                           <td><a href='viewpayment.php?paymentid=<?=$accounts->accountid ?>' class='editinstitution'>View</a></td>
+
                                           
                                         </tr>
                                         <?php

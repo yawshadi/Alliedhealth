@@ -1,6 +1,9 @@
 <?php
 require("init.php");
 new users(); 
+$paymentid=$_GET['paymentid'];
+$accountsdata= account::getaccountbyid($paymentid);
+$bankersdraft=Documents::listdocuments('accounts',$accountsdata->randomnumber);
 require("include/header.php");
 
 
@@ -51,7 +54,7 @@ require("include/header.php");
 
                         <div class="panel panel-flat">
                         <div class="panel-heading">
-                            <legend class="text-bold">Accounts </legend>
+                            <legend class="text-bold">Payment Verification </legend>
 
                             <!-- Bootstrap alert notification -->
                         
@@ -69,6 +72,42 @@ require("include/header.php");
                                                 <strong>Well done!</strong> <?= Printisset::printing() ?>
                                             </div>
                                 <?php } ?>
+                                <div class='row'>
+                                    <div class="col-md-12">
+                                  
+											<!-- START carousel-->
+											<div id="carousel-example-captions" data-ride="carousel" class="carousel slide">
+												<ol class="carousel-indicators">
+                                                    <?php 
+                                                    $i=0;
+                                                    foreach($bankersdraft as $doc):
+                                                    ?>
+													<li data-target="#carousel-example-captions" data-slide-to="<?= $i; ?>" class="<?=($i==0)?'active':'' ?>"></li>
+				
+                                                 <?php 
+                                                 $i++;
+                                                endforeach; ?>
+												</ol>
+												<div role="listbox" class="carousel-inner">
+                                                    <?php 
+                                                    foreach($bankersdraft as $doc):
+                                                    ?>
+													<div class="item active">
+														<img src="uploads/<?= $doc->newname ?>"  alt="First slide image">
+														<div class="carousel-caption">
+															
+														</div>
+													</div>
+                                                    <?php endforeach; ?>
+													
+												</div>
+												<a href="#carousel-example-captions" role="button" data-slide="prev" class="left carousel-control"> <span aria-hidden="true" class="fa fa-angle-left"></span> <span class="sr-only">Previous</span> </a>
+												<a href="#carousel-example-captions" role="button" data-slide="next" class="right carousel-control"> <span aria-hidden="true" class="fa fa-angle-right"></span> <span class="sr-only">Next</span> </a>
+											</div>
+											<!-- END carousel-->
+                                       
+                                        <div>
+										</div>
                             <div class="panel-body">
                                 <form action="forms/addpayment.php" method="post">
                                 <div class="col-lg-6">
@@ -77,12 +116,12 @@ require("include/header.php");
 
                                         <div class="form-group">
                                             <label>Fullname:</label>
-                                            <input class="form-control" required name='fullname' placeholder="Fullname" value="" type="text">
+                                            <input class="form-control" readonly name='fullname' placeholder="Fullname" value="<?= $accountsdata->fullname ?>" type="text">
                                         </div>
 
                                         <div class="form-group">
                                             <label>Amount Due (GHC):</label>
-                                            <input class="form-control" required id='amountdue' name='amountdue' readonly value="200" type="text">
+                                            <input class="form-control" readonly id='amountdue' name='amountdue' readonly value="<?= $accountsdata->amountdue ?>" type="text">
                                            
                                             <input class="form-control"  name='location'  value="account" type="hidden">
                                             <input class="form-control"  name='accounttype'  value="newpayment" type="hidden">
@@ -93,12 +132,12 @@ require("include/header.php");
 
                                         <div class="form-group">
                                             <label>Telephone Number:</label>
-                                            <input class="form-control" required name="telephonenumber" placeholder="Telephone Number" value="" type="tel">
+                                            <input class="form-control" readonly name="telephonenumber" placeholder="Telephone Number" value="<?= $accountsdata->telephonenumber ?>" type="tel">
                                         </div>
                                     
                                         <div class="form-group">
                                             <label>Email Address:</label>
-                                            <input class="form-control" required name='emailaddress' placeholder="Email Address" value="" type="email">
+                                            <input class="form-control" readonly name='emailaddress' placeholder="Email Address" value="<?= $accountsdata->emailaddress ?>" type="email">
                                             <input class="form-control"  name='uniqueuploadid'  id='uniqueuploadid'value="<?php echo time();?>" type="hidden">
                                         </div>
 
@@ -110,46 +149,42 @@ require("include/header.php");
 
                                         
                                         <div class="form-group">
-                                            <label>Profession :</label>
-                                            <select required name="professionid" id='profession' class="form-control select" >
-                                            <option value="">Please Select</option>
-                                            <?php
-                                            $professionlist = profession::listAll(); 
-                                            foreach($professionlist as $profession):
-                                            ?>
-                                            <option value="<?=$profession->professionid ?>"><?= $profession->professionname ?></option>
-                                            <?php endforeach;?>
-                                            </select>
+                                            <label>Profession:</label>
+                                            <input class="form-control" readonly name="amountpaid" placeholder="Profession name" value="<?= $accountsdata->professionname ?>" type="text">
                                         </div>
 
                                         <div class="form-group">
                                             <label>Amount Paid:</label>
-                                            <input class="form-control" required name="amountpaid" placeholder="Amount Paid" value="" type="text">
+                                            <input class="form-control" readonly name="amountpaid" placeholder="Amount Paid" value="<?= $accountsdata->amountpaid ?>" type="text">
                                         </div>
 
 
                                         <div class="form-group">
                                             <label>Payment Date:</label>
-                                            <input class="form-control dates" required id='paymentdate' name="paymentdate" placeholder="Payment Date" value="" type="text">
+                                            <input class="form-control dates" readonly id='paymentdate' name="paymentdate" placeholder="Payment Date" value="<?= $accountsdata->paymentdate ?>" type="text">
                                         </div>
 
-                                         <div class="form-group">
-                                            <label>Upload Banker's Draft:</label>
-                                            <input class="form-control dates"  id='imageupload'   type="file">
-                                        </div>
+                                     
 
-
+                                        <?php if($accountsdata->approved==0):?>
                                         <div class="form-group">
                                             <label>&nbsp;</label>
-                                            <button type="submit" name="addpayment" class="btn btn-primary">Submit Payment <i class="icon-add position-right"></i></button>
+                                            <button type="button" id='approve' name="addpayment" class="btn btn-primary">Approve Payment <i class="icon-add position-right"></i></button>
                                            
                                         </div>
-
+                                                    <?php endif; ?>
 
                                     </fieldset>
                                 </div>
+                                <?php if($accountsdata->approved==1):?>
+                                <button type='button' class="btn btn-success">This payment was approved by <b><?php echo $accountsdata->approvedby?></b> on <b><?php echo $accountsdata->dateapproved ?></b></button>
+                                                    <?php endif;?>
+                                <!--<div class='col-lg-12'>
+                                <img src="uploads/5b8ac6da5ddd6.jpg" alt=""width="500" height="400">
 
-                            </div>
+                                </div>-->
+                               
+                            
                             </form>
                             </div>
                     </div>
@@ -176,30 +211,23 @@ require("include/header.php");
         <script>
         $(document).ready(function () {
            
-            $('#imageupload').uploadifive({
-            'buttonText': 'click here to upload',
-            'auto': true,
-            'method': 'post',
-            'multi': true,
-            'width': 460,
-            'formData': {
-                'uniqueuploadid': $("#uniqueuploadid").val()
-            },
-            'onUploadComplete': function(file, data) {
-                console.log("filedata", data);
-                console.log("file", file);
-            },
+           
+             $("#approve").click(function (e) { 
+                var accountid="<?php echo $paymentid ?>";
+                var telephonenumber="<?php echo $accountsdata->telephonenumber ?>";
+                var emailaddress="<?php echo $accountsdata->emailaddress ?>";
+                if (window.confirm("Are you sure you want to approve?")) {
 
-            'uploadScript': urlroot + '/forms/fileupload.php',
-        });
-            /* $("#profession").change(function (e) { 
-            var professionid=$(this).val();
-             ajaxurl="forms/getamount.php";
-             textboxid="amountdue";
-             getdata={professionid:professionid};
-            AjaxGetRequestWithTextbox(ajaxurl,getdata,textboxid);
+                var postdata = { accountid: accountid,telephonenumber:telephonenumber,emailaddress:emailaddress }
+                var ajaxurl = "forms/approvepayment.php";
+                AjaxPostRequest(ajaxurl, postdata);
+
+                window.location.reload();
+                return false;
+
+            }
             
-        });*/
+        });
         });
         </script>
         

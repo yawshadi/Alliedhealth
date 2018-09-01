@@ -20,6 +20,7 @@ public function __construct(){
         $result= $healthdb->singleRecord();
         if(is_object($result)){
             $_SESSION['userid']=$result->uid;
+            $_SESSION['fullname']=$result->fullname;
             Redirecting::location('index');
         }else{
             $data="Incorrect Username or Password";

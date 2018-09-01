@@ -25,6 +25,7 @@
         <link href="assets/css/pages.css" rel="stylesheet" type="text/css" />
         <link href="assets/css/menu.css" rel="stylesheet" type="text/css" />
         <link href="assets/css/responsive.css" rel="stylesheet" type="text/css" />
+        <link href="assets/css/uploadifive.css" rel="stylesheet" type="text/css" />
 		<link rel="stylesheet" href="plugins/switchery/switchery.min.css">
         <link href="plugins/bootstrap-datepicker/css/bootstrap-datepicker.min.css" rel="stylesheet">
 
@@ -46,7 +47,21 @@
         <![endif]-->
 
         <script src="assets/js/modernizr.min.js"></script>
+        <script type="text/javascript">
+    var healthhead = {
+        <?php
+        /*
+         * PHP 7 throws warnings about non-scalar values in constants...
+         * serialized JSVARS to compensate.
+        */
+        foreach (unserialize(JSVARS) as $jskey => $jsval){
+            echo $jskey . " : '" . $jsval . "',";
+        }
+        ?>
+    }
 
+    const urlroot=healthhead.urlroot;
+</script>
     </head>
 
       <body class="fixed-left">
