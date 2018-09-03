@@ -16,3 +16,8 @@ define('URLROOT', 'http://localhost:8088');
 define('JSVARS',serialize(array(
 	'urlroot' => URLROOT
 )));
+define('USERNAME', 'postmaster@mg.myfinancecoach.com');
+define('PASSWORD', '0015e89b20ad6cbc5e3961b951595ffd');
+define('MFCEMAIL', 'mymentor@myfinancecoach.org');
+//define('MFCEMAIL', 'cassandra.sarfo@yahoo.com');
+define('MFCSENDEREMAIL', 'volunteering@myfinancecoach.com');

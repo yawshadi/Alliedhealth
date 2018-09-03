@@ -159,6 +159,7 @@ class Post extends PostController {
         foreach ($_POST as $name => $value) {
             $$name = $value;
         }
+        $serialnumber=time();
         $account = new account($accountid);
         $account_data=& $account->recordObject;
         $dateapproved=date('Y-m-d');
@@ -166,7 +167,10 @@ class Post extends PostController {
         $account_data->approved=1;
         $account_data->dateapproved=$dateapproved;
         $account_data->approvedby=$approveby;
-        $account->store();
+       if( $account->store()){
+          $send= SendEmail::compose($emailaddress,$serialnumber);
+          print_r($send);
+       }
 
     }
     public static function addBill(){
